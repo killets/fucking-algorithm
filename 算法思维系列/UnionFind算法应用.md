@@ -228,3 +228,6 @@ boolean equationsPossible(String[] equations) {
 [下一篇：一行代码就能解决的算法题](../高频面试系列/一行代码解决的智力题.md)
 
 [目录](../README.md#目录)
+
+# Note
+等价关系这个用 uf来做确实不错,先看相等的都union,然后check 不相等的应该都不connected

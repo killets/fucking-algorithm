@@ -408,3 +408,9 @@ KMP 算法也就是动态规划那点事，我们的公众号文章目录有一�
 [下一篇：团灭 LeetCode 股票买卖问题](../动态规划系列/团灭股票问题.md)
 
 [目录](../README.md#目录)
+
+# Note
+Boyer Moore N/M, 但最坏NM
+
+for i = 0; i<=N-M; i++
+DP中按l遍历时，也是 for i = 0; i<=N-L; i++

@@ -76,6 +76,8 @@ LRU 缓存算法的核心数据结构就是哈希链表，双向链表和哈希�
 
 也许读者会问，为什么要是双向链表，单链表行不行？另外，既然哈希表中已经存了 key，为什么链表中还要存键值对呢，只存值不就行了？
 
+> 比如 满的时候要删除第一个，那么也要删除hash表中的key，这个时候如果node只存value，那就不知道key，node还有地址，那就需要node地址到 key的另一个hash辅助,所以还不如node就存key:value
+
 想的时候都是问题，只有做的时候才有答案。这样设计的原因，必须等我们亲自实现 LRU 算法之后才能理解，所以我们开始看代码吧～
 
 ### 四、代码实现
@@ -350,3 +352,45 @@ class LRUCache:
 [下一篇：二叉搜索树操作集锦](../数据结构系列/二叉搜索树操作集锦.md)
 
 [目录](../README.md#目录)
+
+
+# Note
+
+- collections.ordereddict
+- python cheat: collections.OrderedDict
+move_to_end()
+self.popitem(last = False)
+
+```
+from collections import OrderedDict
+class LRUCache(OrderedDict):
+
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        self.capacity = capacity
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if key not in self:
+            return - 1
+        
+        self.move_to_end(key)
+        return self[key]
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: void
+        """
+        if key in self:
+            self.move_to_end(key)
+        self[key] = value
+        if len(self) > self.capacity:
+            self.popitem(last = False)
+```

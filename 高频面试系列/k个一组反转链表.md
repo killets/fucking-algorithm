@@ -63,6 +63,7 @@ ListNode reverse(ListNode a) {
     return pre;
 }
 ```
+> cur和pre节点
 
 ![](../pictures/kgroup/8.gif)
 
@@ -72,6 +73,7 @@ ListNode reverse(ListNode a) {
 
 只要更改函数签名，并把上面的代码中 `null` 改成 `b` 即可：
 [labuladong](https://github.com/labuladong) 提供Java解法代码：
+
 ```java
 /** 反转区间 [a, b) 的元素，注意是左闭右开 */
 ListNode reverse(ListNode a, ListNode b) {
@@ -89,6 +91,7 @@ ListNode reverse(ListNode a, ListNode b) {
 }
 ```
 [renxiaoyao](https://github.com/tianzhongwei) 提供C++解法代码：
+
 ```C++
 ListNode* reverse(ListNode* begin,ListNode* end) {
     ListNode* newHead = nullptr;
@@ -105,6 +108,7 @@ ListNode* reverse(ListNode* begin,ListNode* end) {
 
 现在我们迭代实现了反转部分链表的功能，接下来就按照之前的逻辑编写 `reverseKGroup` 函数即可：
 [labuladong](https://github.com/labuladong) 提供Java解法代码：
+
 ```java
 ListNode reverseKGroup(ListNode head, int k) {
     if (head == null) return null;
@@ -124,6 +128,7 @@ ListNode reverseKGroup(ListNode head, int k) {
 }
 ```
 [renxiaoyao](https://github.com/tianzhongwei) 提供C++解法代码：
+
 ```C++
 class Solution {
 public:
@@ -223,3 +228,7 @@ class Solution:
 [下一篇：如何判定括号合法性](../高频面试系列/合法括号判定.md)
 
 [目录](../README.md#目录)
+
+# Note
+
+recursive 先反转k个，然后子问题recursive（返回值是kth node）, 然后连起来。
